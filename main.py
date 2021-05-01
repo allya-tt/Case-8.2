@@ -26,7 +26,7 @@ def runCommand(command):
     if command == 1:
         return path()
     elif command == 2:
-        return moveUp()
+        #return moveUp()
     #elif command == 3:
         #return moveDown(currentDir)
     #elif command == 4:
@@ -52,8 +52,8 @@ def path():
     runCommand(acceptCommand())
 
 
-def moveUp():
-    os.path.join(os.path.dirname(__file__), os.pardir)
+#def moveUp():
+    
 
 
 main()
