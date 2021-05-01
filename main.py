@@ -45,7 +45,11 @@ def runCommand(command):
 def path():
     currentDirectory = pathlib.Path('.')
     for currentFile in currentDirectory.iterdir():
-        print(currentFile)
+        if os.path.isfile(currentFile):
+            print('Файл:', currentFile)
+        if os.path.isdir(currentFile):
+            print('Каталог:', currentFile)
+    runCommand(acceptCommand())
 
 
 def moveUp():
