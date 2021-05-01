@@ -22,7 +22,7 @@ def acceptCommand():
     return function
 
 
-def runCommand(command):
+def runCommand(command): 
     if command == 1:
         return path()
     elif command == 2:
@@ -40,9 +40,7 @@ def runCommand(command):
         exit()
 
 
-# определение пути
-
-def path():
+def path(): #просмотр каталога
     currentDirectory = pathlib.Path('.')
     for currentFile in currentDirectory.iterdir():
         if os.path.isfile(currentFile):
@@ -52,7 +50,7 @@ def path():
     runCommand(acceptCommand())
 
     
-def moveUp():
+def moveUp(): #перейти на уровень вверх
     currentDirectory = os.getcwd()
     m=currentDirectory
     l = (m.rfind('\\'))
