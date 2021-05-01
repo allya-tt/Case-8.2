@@ -59,6 +59,8 @@ def moveUp():
     l=(m.find('\\'))
     str=m[m.find('\\')+1:]
     str=str[::-1]
-    print(str)
+    os.chdir(str)
+    print(os.getcwd())
+    runCommand(acceptCommand())
 
 main()
