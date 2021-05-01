@@ -54,13 +54,14 @@ def path():
     
 def moveUp():
     currentDirectory = os.getcwd()
-    m=os.path.dirname(currentDirectory)
-    m=m[::-1]
-    l=(m.find('\\'))
-    str=m[m.find('\\')+1:]
-    str=str[::-1]
+    m=currentDirectory
+    l = (m.rfind('\\'))
+    if len(m) != 3:
+        str = m[:m.rfind('\\')]
+    else:
+        str = m[:m.rfind('\\')+1]
     os.chdir(str)
-    print(os.getcwd())
+    print((str))
     runCommand(acceptCommand())
 
 main()
