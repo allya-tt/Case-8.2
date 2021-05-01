@@ -57,7 +57,7 @@ def moveUp():
     m=currentDirectory
     l = (m.rfind('\\'))
     if len(m) != 3:
-        str = m[:m.l]
+        str = m[:l]
     else:
         str = m[:l+1]
     os.chdir(str)
