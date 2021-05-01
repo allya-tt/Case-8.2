@@ -26,7 +26,7 @@ def runCommand(command):
     if command == 1:
         return path()
     elif command == 2:
-        #return moveUp()
+        return moveUp()
     #elif command == 3:
         #return moveDown(currentDir)
     #elif command == 4:
@@ -51,9 +51,14 @@ def path():
             print('Каталог:', currentFile)
     runCommand(acceptCommand())
 
-
-#def moveUp():
     
-
+def moveUp():
+    currentDirectory = os.getcwd()
+    m=os.path.dirname(currentDirectory)
+    m=m[::-1]
+    l=(m.find('\\'))
+    str=m[m.find('\\')+1:]
+    str=str[::-1]
+    print(str)
 
 main()
