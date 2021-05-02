@@ -114,14 +114,14 @@ def countBytes(path): #подсчитывает суммарный объем (�
     return total
 
 
-def findFiles(target, path): 
-    result = []
-    # Wlaking top-down from the root
-    for root, dir, files in os.walk(path):
-        if os.path.isfile(path):
-            result.append(os.path.join(root, target))
-    print(result)
-    return
+def findFiles(target, path):
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            if file.endswith(target):
+                path_file = os.path.join(root, file)
+                print(path_file)
+    print("Файла нет ни в одном из каталогов.")
+    runCommand(acceptCommand())
 
 
 main()
