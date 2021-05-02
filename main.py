@@ -35,15 +35,14 @@ def runCommand(command):
     elif command == 3:
         currentDir = os.getcwd()
         moveDown(currentDir)
-    # return moveDown(currentDir)
     elif command == 4:
         path = input("Введите путь к нужному каталогу: ")
         return countFiles(path)
     elif command == 5:
         path = input("Введите путь к нужному каталогу: ")
         print(countBytes(path))
-    # elif command == 6:
-    # return findFiles(target, path)
+    elif command == 6:
+        return findFiles(target, path)
     elif command == 7:
         print("Выход из программы.")
         exit()
