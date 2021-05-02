@@ -42,12 +42,14 @@ def runCommand(command):
         path = input("Введите путь к нужному каталогу: ")
         print(countBytes(path))
     elif command == 6:
-        return findFiles(target, path)
+        target=input("Введите имя файла, который нужно найти: ")
+        path=input("Введите путь к нужному каталогу: ")
+        findFiles(target, path)
     elif command == 7:
         print("Выход из программы.")
         exit()
 
-
+        
 def paths():  # просмотр каталога
     currentDirectory = pathlib.Path('.')
     for currentFile in currentDirectory.iterdir():
@@ -71,7 +73,7 @@ def moveUp():  # перейти на уровень вверх
     runCommand(acceptCommand())
 
 
-def moveDown(currentDir):
+def moveDown(currentDir): #перейти на уровень вниз
     sub=input('Введите имя подкаталога: ')
     if os.path.exists(sub):
         os.chdir(currentDir+'\\'+sub)
@@ -79,7 +81,7 @@ def moveDown(currentDir):
     print("Неверно введено имя подкаталога")
     runCommand(acceptCommand())
 
-def countFiles(path):
+def countFiles(path): #подсчитывает количество файлов в указанном каталоге
     totalFiles = 0
     totalDir = 0
     for base, dirs, files in os.walk(path):
@@ -93,7 +95,7 @@ def countFiles(path):
     runCommand(acceptCommand())
 
 
-def countBytes(path):
+def countBytes(path): #подсчитывает суммарный объем (в байтах) всех файлов в указанном каталоге
     """Returns the `directory` size in bytes."""
     total = 0
     try:
@@ -112,7 +114,7 @@ def countBytes(path):
     return total
 
 
-def findFiles(target, path):
+def findFiles(target, path): 
     result = []
     # Wlaking top-down from the root
     for root, dir, files in os.walk(path):
