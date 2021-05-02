@@ -1,3 +1,8 @@
+# Case-study 8.2
+# Raspopova Alexandra (45%)
+# Adristi Fauzi (%)
+# Belozertseva Maria (%)
+
 import os
 import pathlib
 
