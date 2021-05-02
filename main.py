@@ -1,7 +1,7 @@
 # Case-study 8.2
-# Raspopova Alexandra (45%)
-# Adristi Fauzi (%)
-# Belozertseva Maria (%)
+# Raspopova Alexandra (50%)
+# Adristi Fauzi (40%)
+# Belozertseva Maria (30%)
 
 import os
 import pathlib
@@ -32,22 +32,24 @@ def runCommand(command):
         return paths()
     elif command == 2:
         return moveUp()
-    #elif command == 3:
-        #return moveDown(currentDir)
+    elif command == 3:
+        currentDir = os.getcwd()
+        moveDown(currentDir)
+    # return moveDown(currentDir)
     elif command == 4:
-        path=input("Введите путь к нужному каталогу: ")
+        path = input("Введите путь к нужному каталогу: ")
         return countFiles(path)
     elif command == 5:
         path = input("Введите путь к нужному каталогу: ")
         print(countBytes(path))
-    #elif command == 6:
-        #return findFiles(target, path)
+    # elif command == 6:
+    # return findFiles(target, path)
     elif command == 7:
         print("Выход из программы.")
         exit()
 
 
-def path(): #просмотр каталога
+def paths():  # просмотр каталога
     currentDirectory = pathlib.Path('.')
     for currentFile in currentDirectory.iterdir():
         if os.path.isfile(currentFile):
@@ -56,19 +58,28 @@ def path(): #просмотр каталога
             print('Каталог:', currentFile)
     runCommand(acceptCommand())
 
-    
-def moveUp(): #перейти на уровень вверх
+
+def moveUp():  # перейти на уровень вверх
     currentDirectory = os.getcwd()
-    m=currentDirectory
+    m = currentDirectory
     l = (m.rfind('\\'))
     if len(m) != 3:
         str = m[:l]
     else:
-        str = m[:l+1]
+        str = m[:l + 1]
     os.chdir(str)
     print((str))
     runCommand(acceptCommand())
-    
+
+
+def moveDown(currentDir):
+    sub=input('Введите имя подкаталога: ')
+    if os.path.exists(sub):
+        os.chdir(currentDir+'\\'+sub)
+        print(os.getcwd())
+    print("Неверно введено имя подкаталога")
+    runCommand(acceptCommand())
+
 def countFiles(path):
     totalFiles = 0
     totalDir = 0
@@ -83,7 +94,7 @@ def countFiles(path):
     runCommand(acceptCommand())
 
 
-def countBytes(path): 
+def countBytes(path):
     """Returns the `directory` size in bytes."""
     total = 0
     try:
@@ -102,13 +113,14 @@ def countBytes(path):
     return total
 
 
-def findFiles(target, path)
-   result = []
-   #Wlaking top-down from the root
-   for root, dir, files in os.walk(path):
-       if filename in files:
-           result.append(os.path.join(root, target))
+def findFiles(target, path):
+    result = []
+    # Wlaking top-down from the root
+    for root, dir, files in os.walk(path):
+        if os.path.isfile(path):
+            result.append(os.path.join(root, target))
     print(result)
     return
+
 
 main()
