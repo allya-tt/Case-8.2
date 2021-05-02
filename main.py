@@ -75,27 +75,27 @@ def countFiles(path):
     print('Total number of files', totalFiles)
     print('Total Number of directories', totalDir)
     print('Total:', (totalDir + totalFiles))
+    runCommand(acceptCommand())
 
 
-def countBytes(path):  # Нужны значения пути из первого шага (command = 1)
+def countBytes(path): 
     """Returns the `directory` size in bytes."""
     total = 0
     try:
-        # print("[+] Getting the size of", directory)
         for entry in os.scandir(path):
             if entry.is_file():
-                # if it's a file, use stat() function
                 total += entry.stat().st_size
             elif entry.is_dir():
-                # if it's a directory, recursively call this function
                 total += countBytes(entry.path)
+    except FileNotFoundError:
+        print("Каталога не существует.")
     except NotADirectoryError:
-        # if `directory` isn't a directory, get the file size then
         return os.path.getsize(path)
     except PermissionError:
-        # if for whatever reason we can't open the folder, return 0
+        print("Нет доступа к данному каталогу.")
         return 0
     return total
+
 
 def findFiles(target, path)
    result = []
