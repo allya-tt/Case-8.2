@@ -22,17 +22,19 @@ def acceptCommand():
     return function
 
 
-def runCommand(command): 
+def runCommand(command):
     if command == 1:
-        return path()
+        return paths()
     elif command == 2:
         return moveUp()
     #elif command == 3:
         #return moveDown(currentDir)
-    #elif command == 4:
-        #return countFiles(path)
-    #elif command == 5:
-        #return countBytes(path)
+    elif command == 4:
+        path=input("Введите путь к нужному каталогу: ")
+        return countFiles(path)
+    elif command == 5:
+        path = input("Введите путь к нужному каталогу: ")
+        print(countBytes(path))
     #elif command == 6:
         #return findFiles(target, path)
     elif command == 7:
@@ -63,20 +65,19 @@ def moveUp(): #перейти на уровень вверх
     runCommand(acceptCommand())
     
 def countFiles(path):
-    #path = 'C:/Positronx/Python/Scripts/' (EXAMPLE)
     totalFiles = 0
     totalDir = 0
     for base, dirs, files in os.walk(path):
-        print('Searching in : ',base)
         for directories in dirs:
             totalDir += 1
         for Files in files:
             totalFiles += 1
-    print('Total number of files',totalFiles)
-    print('Total Number of directories',totalDir)
-    print('Total:',(totalDir + totalFiles))
+    print('Total number of files', totalFiles)
+    print('Total Number of directories', totalDir)
+    print('Total:', (totalDir + totalFiles))
 
-def countBytes(path): #Нужны значения пути из первого шага (command = 1)
+
+def countBytes(path):  # Нужны значения пути из первого шага (command = 1)
     """Returns the `directory` size in bytes."""
     total = 0
     try:
